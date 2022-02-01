@@ -61,6 +61,7 @@ const createNewTransaction = () => {
     amountInputPanel.value > 0 ? incomeArea.append(newTransaction) && newTransaction.classList.add('icome') :
     expensesArea.append(newTransaction) && newTransaction.classList.add('expense');
     moneyArr.push(parseFloat(amountInputPanel.value))
+    countMoney(moneyArr);
 
     closePanel();
     ID++;
@@ -88,6 +89,11 @@ const checkCategory = transaction => {
             categoryIcon = '<i class="fas fa-film"></i> '
             break;
     }
+}
+
+const countMoney = money => {
+    const newMoney = money.reduce((a, b) => a + b);
+    availableMoney.textContent = `${newMoney}zł`
 }
 
 addTranBtn.addEventListener('click', showPanel)
